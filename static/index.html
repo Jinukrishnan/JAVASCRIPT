@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>file</title>
+</head>
+<body>
+    <form onsubmit="submitHandler(event)">
+        <input type="file" name="image" id="image"><br>
+        <input type="text" name="name" id="name"><br>
+        <input type="submit" value="upload">
+    </form>
+    <ol id="list">
+
+    </ol>
+    <script>
+        let list = document.getElementById("list");
+        function submitHandler(event) {
+            event.preventDefault();
+            let formdata = new FormData(event.target);
+            fetch("http://localhost:3000/api/set", {
+                method: "post",
+                body: formdata
+            })
+            .then(res => res.text())
+            .then(data => {
+                alert(data);
+                print();
+            })
+        }
+        function print() {
+            fetch("http://localhost:3000/api/get")
+            .then(res => res.status == 200 ? res.json() : res.text())
+            .then(data => {
+                if(typeof(data) == "String") {
+                    alert(data);
+                    return;
+                }
+                list.innerHTML = "";
+                data.forEach(item => {
+                    let li = `<li><a href="http://localhost:3000/api/image/${item.image?.filename}">${item.name}</a></li>`;
+                    list.innerHTML += li;
+                })
+            })
+        }
+        print();
+    </script>
+</body>
+</html>
