@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multer</title>
+    <style>
+        div{
+            padding: 10px;
+            text-align: center;
+            margin: auto;
+            width: 400px    ;
+        }
+        form{
+            border: 1px dotted gray ;
+            width: 400px    ;
+            margin: auto;
+
+            
+        }
+    </style>
+</head>
+<body>
+    <h1>MULTER</h1>
+    <form action="" id="frm" enctype="multipart/form-data">
+        <div><input type="text" name="name" id="name" placeholder="name"></div>
+        <div><input type="email" name="email" id="email" placeholder="email"></div>
+        <div><input type="number" name="phone" id="phone" placeholder="Phone"></div>
+        <div><input type="file" name="profile" id="profile" placeholder="Choose  Your Profile pic" multiple></div>
+        <div><input type="submit"></div>
+    </form>
+
+<div id="asd">
+
+</div>
+    <script>
+        function get(){
+            fetch('http://localhost:3001/api/get')
+            .then((res)=>res.json())
+            .then((data)=>{console.log(data[0])
+                let img = `<img src="http://localhost:3001/api/image/${data[0].profile.filename}" />`;
+                console.log(document.querySelector("#asd"));
+                document.querySelector("#asd").innerHTML = img;
+            //     s=""
+            // data.map(i=>{
+            //     console.log(i.profile);
+            //     s+=`<img src="${i.profile.destination}/${i.profile.originalname}">`
+            // })
+            // document.getElementById('asd').innerHTML=s
+            })
+            .catch((err)=>{console.log(err);})
+
+        }
+        get()
+
+        document.getElementById('frm').addEventListener('submit',(e)=>{
+            e.preventDefault()
+            
+            const data=new FormData(e.target)
+            console.log(data);
+
+            fetch('http://localhost:3001/api/',
+            {
+                method:"POST",
+                body:data
+            }).then((res)=>{console.log(res);}).catch((err)=>{console.log(err);})
+
+        })
+    </script>
+</body>
+</html>

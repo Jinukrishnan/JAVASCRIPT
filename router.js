@@ -1,21 +1,24 @@
 import { Router } from "express";
+import  * as controller from './controller.js'
 import multer from "multer";
+import path from "path";
 
-import * as fileHandler from "./request-handler.js";
-
-const storage = multer.diskStorage({
-    destination: "./images",
-    filename: (req, file, cb) => {
-        cb(null, file.originalname);
+const storage=multer.diskStorage({
+    destination:"./images",
+    filename:(req,file,cb)=>{
+        cb(null,file.originalname)
     }
-});
+})
 
-const upload = multer({ storage: storage })
+const upload=multer({storage:storage})
 
-const router = Router();
+const router=Router()
+router.route('/').post(upload.single("profile"),controller.form)
+router.route('/get').get(controller.gets)
+router.route("/image/:filename").get((req, res) => {
+    let { filename } = req.params;
+    return res.sendFile(path.resolve(`./images/${filename}`))
+})
 
-router.route("/set").post(upload.single("image"),fileHandler.Set);
-router.route("/get").get(fileHandler.Get);
-router.route("/image/:image").get(fileHandler.Image);
 
-export default router;
+export default router
