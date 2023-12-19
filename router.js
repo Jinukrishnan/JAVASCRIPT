@@ -13,7 +13,9 @@ const storage=multer.diskStorage({
 const upload=multer({storage:storage})
 
 const router=Router()
-router.route('/').post(upload.single("profile"),controller.form)
+// router.route('/').post(upload.single("profile"),upload.single("banner"),controller.form)
+router.route('/').post(upload.fields([{name:'profile',maxCount:1},{name:'banner'}]),controller.form)
+
 router.route('/get').get(controller.gets)
 router.route("/image/:filename").get((req, res) => {
     let { filename } = req.params;
