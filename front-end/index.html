@@ -40,7 +40,7 @@
               </div>
              
               <div class="card-body">
-                <a href="#" onClick="deleteData('${dt.profile.filename}')" class="card-link">Delete</a>
+                <button class="btn btn-danger" onClick="deleteData('${dt.profile.filename}','${dt._id}')" class="card-link">Delete</button>
                 <a href="#" class="card-link">Another link</a>
               </div>
             </div>
@@ -51,10 +51,13 @@
     getContact()
 
 
-   async  function deleteData(filename){
+   async  function deleteData(filename,id){
+    console.log(id);
       console.log(filename);
-      const res=await fetch(`http://localhost:3000/api/del/${filename}`,{method:"DELETE"})
+      const res=await fetch(`http://localhost:3000/api/del/${id}/${filename}`,{method:"DELETE"})
       console.log(res);
+    getContact()
+
     }
   </script>
 </html>

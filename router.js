@@ -7,8 +7,9 @@ import path from 'path'
 const storage=multer.diskStorage({
     destination:'./images',
     filename:(req,file,cb)=>{
-     
-        cb(null,file.originalname)
+        // console.log(file);
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        cb(null,uniqueSuffix+"_"+file.originalname)
     }
 })
 const upload=multer({storage:storage})
@@ -20,6 +21,6 @@ router.route('/image/:filename').get((req,res)=>{
   
     return res.sendFile(path.resolve(`./images/${filename}`))
 })
-router.route('/del/:filename').delete(handler.deleteMulter)
+router.route('/del/:id/:filename').delete(handler.deleteMulter)
 
 export default router;
