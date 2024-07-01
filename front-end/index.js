@@ -11,7 +11,7 @@ if(value!==null)
 {
     function getData()
     {
-        fetch("http://localhost:4001/api/home",{
+        fetch("http://www.jandk.tech/api/home",{
             headers:{"Authorization":`Bearer ${value}`}
         })
         .then((res)=>res.json())
@@ -45,7 +45,7 @@ if(value!==null)
 function listData()
 {
     let r="",p="";
-    fetch("http://localhost:4001/api/get")
+    fetch("http://jandk.tech/api/get")
     .then((res)=>res.json())
     .then((data)=>{
         data.map((dt)=>{
@@ -90,7 +90,7 @@ async function search()
     inp=inp.toUpperCase();
     // inp=inp.toUpperCase();
     // console.log(inp.length);
-    fetch("http://localhost:4001/api/get")
+    fetch("http://www.jandk.tech/api/get")
     .then((res)=>res.json())
     .then((data)=>{
         data.filter((dt)=>{
