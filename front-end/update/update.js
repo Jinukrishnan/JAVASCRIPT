@@ -9,7 +9,7 @@ if(value!==null)
 {
     function getData()
     {
-        fetch("http://localhost:4001/api/home",{
+        fetch("http://www.jandk.tech/api/home",{
             headers:{"Authorization":`Bearer ${value}`}
         })
         .then((res)=>res.json())
@@ -43,7 +43,7 @@ let url=window.location.href;
 var search=new URLSearchParams(url.split("?")[1]);
 var id=search.get("id");
 
-fetch(`http://localhost:4001/api/detail/${id}`,{method: "POST"})
+fetch(`http://www.jandk.tech/api/detail/${id}`,{method: "POST"})
 .then((res)=>res.json())
 .then((data)=>{
     post=data.poster;
@@ -156,7 +156,7 @@ document.getElementById("asd").addEventListener('click',async(e)=>{
     const bg=banner;
 
     // console.log(name,lang,cate,dir,rev,time,disc,rate,poster,bg);
-    fetch(`http://localhost:4001/api/update/${id}`,{
+    fetch(`http://www.jandk.tech/api/update/${id}`,{
         method:"PATCH",
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify({name,lang,cate,dir,rev,time,disc,rate,poster,bg})
