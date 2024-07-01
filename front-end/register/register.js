@@ -9,7 +9,7 @@ if(value!==null)
 {
     function getData()
     {
-        fetch("http://localhost:4001/api/home",{
+        fetch("http://www.jandk.tech/api/home",{
             headers:{"Authorization":`Bearer ${value}`}
         })
         .then((res)=>res.json())
@@ -59,7 +59,7 @@ document.getElementById("asd").addEventListener('submit',async (e)=>{
     const poster=post;
     const bg=banner;
     console.log(name,lang,cate,dir,rev,time,disc,rate,poster,bg);
-    fetch("http://localhost:4001/api/add",{
+    fetch("http://www.jandk.tech/api/add",{
         method:"POST",
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify({name,lang,cate,dir,rev,time,disc,rate,poster,bg})

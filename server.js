@@ -13,7 +13,7 @@ app.use(express.json({limit:"20mb"}))
 app.use("/api",router)
 connection2()
 connection().then(()=>{
-    app.listen(process.env.PORT,()=>{
+    app.listen(process.env.PORT||80,()=>{
         console.log("SERVER STARTED");
     })
 }).catch(error=>{

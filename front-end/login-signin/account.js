@@ -15,7 +15,7 @@ document.getElementById("s-btn").addEventListener("click",()=>{
     const User_ID=document.getElementById("user-name").value;
     const Pwd=document.getElementById("password").value;
     console.log(User_ID,Pwd);
-    fetch("http://localhost:4001/api/adduser/",{
+    fetch("http://www.jandk.tech/api/adduser/",{
         method:"POST",
         headers:{"Content-type":"application/json"},
         body:JSON.stringify({User_ID,Pwd})
@@ -40,7 +40,7 @@ document.getElementById("l-btn").addEventListener("click",()=>{
     const User_ID=document.getElementById("username").value;
     const Pwd=document.getElementById("pwd").value;
         console.log(User_ID,Pwd);
-        fetch("http://localhost:4001/api/login",{
+        fetch("http://www.jandk.tech/api/login",{
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify({User_ID,Pwd})

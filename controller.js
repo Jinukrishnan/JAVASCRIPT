@@ -58,11 +58,13 @@ const {sign}=pkg;
 export function addUser(req,res)
 {
     try {
+console.log("add user");
         const {User_ID,Pwd}=req.body;
         if(!(User_ID&&Pwd))
         return res.status(404).send("Fileds are empty")
         bcrypt.hash(Pwd,10)
         .then((hashedPwd)=>{
+console.log('dts');
            schema1.create({User_ID,Pwd:hashedPwd});
         })
         .then(()=>{
