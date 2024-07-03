@@ -11,7 +11,8 @@ export function addData(req,res)
 
    try {
     const {...movies}=req.body;
-    res.status(201).send(schema.create({...movies}),{msg:"movie added"});
+console.log({...movies});
+res.status(201).send(schema.create({...movies}),{msg:"movie added"});
    } catch (error) {
     console.log(error);
     res.status(404).send({msg:error});
