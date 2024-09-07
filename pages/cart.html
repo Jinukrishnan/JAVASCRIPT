@@ -4,57 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/cart.css">
+    <!-- <link rel="stylesheet" href="../css/styles.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+     <link rel="stylesheet" href="../css/cart.css">
+
 </head>
 <body>
-    
-        <div id="products">
+    <!-- ------------navbar------------------- -->
 
+    <div class="heading" >
+      
+    <a href="../index.html"> <img src="../images/download.webp" alt="" width="150px"></a>
+
+        <div  class="search-input">
+          <input type="search" placeholder=" Search for products " id="search" > 
+          <a href="./pages/cart.html"><span class="cart-logo"><i class="fa-solid fa-cart-shopping"></i></span></a>
         </div>
-
+        
     </div>
-    <script>let allData = [];
 
-        let s=""
+    <!-- ----------- navbar end ---------------------------  -->
 
-        for (let i = 0; i < localStorage.length; i++) {
-          let key = localStorage.key(i);
-          let value = JSON.parse(localStorage.getItem(key));
-          allData.push(value);
-        }
+    <div class="men-cards" id="products" >
+      
         
 
+    </div>
 
-        // console.log(allData);
-        console.log(allData);
-        allData.map((value)=>{
-            console.log(value.id);
-
-        s+=`
-        <div class="product-cart">
-        <img src="${value.thumbnail}" alt="Product 1" class="product-thumbnail">
-        <div class="product-info">
-            <div class="product-title">${value.title}</div>
-            <div class="product-brand">${value.brand}</div>
-        </div>
-        <div class="product-price">$${value.price}</div>
-        </div>`
-        })  
-        document.getElementById("products").innerHTML=s
-
-
-
-
-
-
-        // let data=JSON.parse(localStorage.getItem(id))
-        // console.log(data);
-    
-
-
-
-      
-        // let data=JSON.parse(localStorage.getItem(id))
-    </script>
+    <script src="../js/cart.js"></script>
 </body>
 </html>
