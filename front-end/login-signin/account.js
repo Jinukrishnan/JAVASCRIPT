@@ -15,7 +15,7 @@ document.getElementById("s-btn").addEventListener("click",()=>{
     const User_ID=document.getElementById("user-name").value;
     const Pwd=document.getElementById("password").value;
     console.log(User_ID,Pwd);
-    fetch("http://13.233.153.198//api/adduser/",{
+    fetch("http://localhost:3000/api/adduser/",{
         method:"POST",
         headers:{"Content-type":"application/json"},
         body:JSON.stringify({User_ID,Pwd})
@@ -40,7 +40,7 @@ document.getElementById("l-btn").addEventListener("click",()=>{
     const User_ID=document.getElementById("username").value;
     const Pwd=document.getElementById("pwd").value;
         console.log(User_ID,Pwd);
-        fetch("http://13.233.153.198//api/login",{
+        fetch("http://localhost:3000/api/login",{
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify({User_ID,Pwd})

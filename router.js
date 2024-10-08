@@ -14,6 +14,7 @@ router.route("/update/:id").patch(controller.updateTask);
 router.route("/adduser").post(controller.addUser);
 router.route("/login").post(controller.login);
 router.route("/home").get(Auth, controller.home);
+router.route("/forgetpwd").get(controller.forgetPwd);
 
 export default router;
 
